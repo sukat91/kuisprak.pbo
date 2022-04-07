@@ -17,10 +17,9 @@ public class KuisPrakPbo {
   
        public static void main(String[] args) {
         Scanner Input = new Scanner (System.in);
-         double jurnal, data, solving, esai, visualisasi, thinking;
-         double hasilbeapelajar,hasilbeamahasiswa;
+         double jurnal = 0 , data = 0 , solving = 0, esai = 0, visualisasi = 0 , thinking = 0,hasilbeapelajar = 0,hasilbeamahasiswa = 0;
         int pilih,usia;
-        
+        String nama;
         System.out.println("=============================================");
         System.out.println("|      Pendaftaran Beasiswa PT. Soekat      |");
         System.out.println("=============================================");
@@ -35,8 +34,9 @@ public class KuisPrakPbo {
            case 1 : 
                System.out.println(" --- Form Pendaftaran --- ");
             System.out.print("Nama Lengkap   : ");
-            String nama = Input.nextLine();
-            System.out.print("Usia           : ");
+            Scanner napel = new Scanner(System.in);
+            nama = napel.nextLine();
+            System.out.print("Usia     : ");
             usia = Input.nextInt();
        
             do {
@@ -62,16 +62,17 @@ public class KuisPrakPbo {
                 
                     
                     Seleksi seleksi;
-                   seleksi = new Seleksi(esai, visualisasi, thinking, jurnal,  data,  solving,  hasilbeapelajar,  hasilbeamahasiswa);
-                   
+                   seleksi = new Seleksi( jurnal, data,  solving,  esai,  visualisasi,  thinking,  hasilbeapelajar,  hasilbeamahasiswa) ;
+                   hasilbeapelajar = seleksi.hasilbeapelajar();
                     System.out.println("Nilai Akhir : " + hasilbeapelajar);
-                    if (hasilbeapelajar < 87,5 ) {
-                        System.out.println("Keterangan : TIDAK DITERIMA");
-                        System.out.println("MOHON MAAF " + nama + " dinyatakan tidak diterima pada program BEASISWA PELAJAR karena belum mencapai nilai yang diharapkan pada tahap seleksi");
-                    }
-                    else if (hasilbeapelajar >= 87,5) {
+                    if (hasilbeapelajar >= 87.5 && usia >= 16 && usia <= 24) {
                         System.out.println("Keterangan : BERHASIL");
                         System.out.println("SELAMAT! " + nama + " dinyatakan  diterima pada program BEASISWA PELAJAR karena sudah mencapai nilai yang diharapkan pada tahap seleksi");
+                         }
+                    else {
+                        System.out.println("Keterangan : TIDAK BERHASIL");
+                        System.out.println("MOHON MAAF " + nama + " dinyatakan tidak diterima pada program BEASISWA PELAJAR karena belum mencapai nilai yang diharapkan pada tahap seleksi");
+
                     }
                  } 
                 else if (pilih == 2) {
@@ -93,7 +94,8 @@ public class KuisPrakPbo {
              
                    System.out.println(" --- Form Pendaftaran --- ");
             System.out.print("Nama Lengkap   : ");
-            nama = Input.nextLine();
+             Scanner namah = new Scanner(System.in);
+            nama = namah.nextLine();
             System.out.print("Usia           : ");
             usia = Input.nextInt();
        
@@ -120,15 +122,15 @@ public class KuisPrakPbo {
                 
                     
                     Seleksi seleksi;
-                   seleksi = new Seleksi(esai, visualisasi, thinking, jurnal,  data,  solving,  hasilbeapelajar,  hasilbeamahasiswa);
-                   
+                   seleksi = new Seleksi( jurnal, data,  solving,  esai,  visualisasi,  thinking,  hasilbeapelajar,  hasilbeamahasiswa) ;
+                   hasilbeamahasiswa = seleksi.hasilbeamahasiswa();
                     System.out.println("Nilai Akhir : " + hasilbeamahasiswa);
-                    if (hasilbeamahasiswa < 87,5 ) {
-                        System.out.println("Keterangan : TIDAK DITERIMA");
-                        System.out.println("MOHON MAAF " + nama + " dinyatakan tidak diterima pada program BEASISWA MAHASISWA karena belum mencapai nilai yang diharapkan pada tahap seleksi");
-                    }
-                    else if (hasilbeamahasiswa >= 87,5) {
+                   if (hasilbeamahasiswa >= 87.5 && usia >= 16 && usia <= 24) {
                         System.out.println("Keterangan : BERHASIL");
+                        System.out.println("SELAMAT! " + nama + " dinyatakan  diterima pada program BEASISWA MAHASISWA karena sudah mencapai nilai yang diharapkan pada tahap seleksi");
+                         }
+                    else  {
+                        System.out.println("Keterangan : TIDAK BERHASIL");
                         System.out.println("SELAMAT! " + nama + " dinyatakan  diterima pada program BEASISWA MAHASISWA karena sudah mencapai nilai yang diharapkan pada tahap seleksi");
                     }
                  } 
